@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+<body>
+  
+  <canvas id="chart" width="800" height="400"></canvas>
+  <script src="app.js"></script>
+  <script>
+    
+    async function chartIt(){
+      const data = await getData();
+      const ctx = document.getElementById('chart').getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.x,
+            datasets: [{
+                label: 'Money Market Rates in the U.S. (Data provided by IMF)',
+                data: data.y,
+                fill: false,
+                backgroundColor: 
+                    'rgba(255, 99, 132, 0.2)'
+                ,
+                borderColor: 
+                    'rgba(240, 39, 30, 0.9)'
+                ,
+                borderWidth: 1.5
+            }]
+        },
+      });
+    }
+
+    chartIt();
+  
+  </script>
+
+
+</body>
+</html>
